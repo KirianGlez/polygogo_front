@@ -1,0 +1,35 @@
+<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+      <h5 class="card-title">Inserta tus datos de inicio</h5>
+
+      <br>
+      
+      <form>
+          <div class="form-group row">
+            <label for="username" class="col-form-label col-sm-3">Nick:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" [(ngModel)]="user.username" name="username">
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-group row">
+            <label for="pass" class="col-form-label col-sm-3">Pass:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" [(ngModel)]="user.password" name="pass">
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-group row">
+              <div class="col-sm-8">
+                <button class="btn btn-light" role="button" (click)="onSubmit('SignIn')">Registrar</button>
+                <button class="btn btn-light" role="button" (click)="onSubmit('LogIn')">Entrar</button>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>

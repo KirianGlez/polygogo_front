@@ -1,0 +1,47 @@
+<div class="card" [style.borderColor]=data.property.color>
+  <img class="card-img-top" src="/assets/img/city-default.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h1 class="card-title" [style.color]=data.property.color>{{data.property.name}}</h1>
+    <p class="card-text">PRECIO: {{data.property.price}}</p> 
+    <p class="card-text">GRUPO: {{data.property.color}}</p> 
+    <p class="card-text">ALQUILER:</p>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Mejoras/Grupo</th>
+          <th scope="col">1</th>
+          <th scope="col">2</th>
+          <th scope="col">3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th >*</th>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <th>**</th>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <th>***</th>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+  <button type="button" class="btn" [style.backgroundColor]=data.property.color (click)="buy()">COMPRAR</button>
+  <br>
+  <button type="button" class="btn btn-danger" (click)="close()">CANCELAR</button>
+  
+  <br>
+</div>

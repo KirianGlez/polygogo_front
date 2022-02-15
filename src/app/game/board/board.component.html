@@ -1,0 +1,454 @@
+<app-logOut></app-logOut>
+
+<ul id="players">
+  <li id="player1" style="color:green;">Player 1: {{this.game.players_details[0].user_id}}<br> Coins: {{this.game.players_details[0].coins}}</li>
+  <li id="player2" style="color:pink;">Player 2: {{this.game.players_details[1].user_id}}<br> Coins: {{this.game.players_details[1].coins}}</li>
+  <li id="player3" style="color:blue;">Player 3: {{this.game.players_details[2].user_id}}<br> Coins: {{this.game.players_details[2].coins}}</li>
+  <li id="player4" style="color:red;">Player 4: {{this.game.players_details[3].user_id}}<br> Coins: {{this.game.players_details[3].coins}}</li>
+</ul>
+
+<div id="turno" style="margin-left:50%;"></div>
+<div id="board" class="board">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td id="box7">
+          <div id="ficha7"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[7].color}">
+            <thead>
+              <tr>
+                <th>{{this.properties[7].name}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box8">
+          <div id="ficha8"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[8].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[8].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[8].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box9">
+          <div id="ficha9"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[9].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[9].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[9].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box10">
+          <div id="ficha10"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[10].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[10].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[10].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box11">
+          <div id="ficha11"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[11].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[11].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[11].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box12">
+          <div id="ficha12"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[12].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[12].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[12].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box13">
+          <div id="ficha13"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[13].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[13].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[13].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box14">
+          <div id="ficha14"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[14].color}">
+            <thead>
+              <tr>
+                <th>{{this.properties[14].name}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="box6">
+          <div id="ficha6"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[6].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[6].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[6].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td colspan="6" rowspan="6" id="boxCenter">
+          <div id="dado" style="display:none;">
+            <img src="/assets/img/dado.gif" class="img-thumbnail" alt="..." ></div>
+          <div *ngIf="this.playerDetails.turn">
+            <button type="button" (click)="tirarDados()" class="btn btn-info" id="btn-dados">Tirar los dados</button>
+          </div>
+        </td>
+        <td id="box15">
+          <div id="ficha15"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[15].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[15].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[15].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="box5">
+          <div id="ficha5"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[5].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[5].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[5].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box16">
+          <div id="ficha16"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[16].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[16].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[16].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="box4">
+          <div id="ficha4"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[4].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[4].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[4].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box17">
+          <div id="ficha17"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[17].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[17].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[17].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="box3">
+          <div id="ficha3"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[3].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[3].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[3].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box18">
+          <div id="ficha18"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[18].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[18].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[18].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="box2">
+          <div id="ficha2"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[2].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[2].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[2].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box19">
+          <div id="ficha19"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[19].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[19].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[19].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="box1">
+          <div id="ficha1"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[1].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[1].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[1].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box20">
+          <div id="ficha20"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[20].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[20].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[20].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td id="box0">
+          <div id="ficha0"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[0].color}">
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[0].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box27">
+          <div id="ficha27"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[27].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[27].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[27].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box26">
+          <div id="ficha26"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[26].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[26].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[26].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box25">
+          <div id="ficha25"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[25].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[25].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[25].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box24">
+          <div id="ficha24"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[24].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[24].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[24].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box23">
+          <div id="ficha23"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[23].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[23].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[23].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box22">
+          <div id="ficha22"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[22].color}">
+            <thead>
+              <tr>
+                <th>${{this.properties[22].price}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{this.properties[22].name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td id="box21">
+          <div id="ficha21"></div>
+          <table class="table-box" [ngStyle]="{'background-color': this.properties[21].color}">
+            <thead>
+              <tr>
+                <th>{{this.properties[21].name}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
