@@ -54,4 +54,8 @@ pasarTurno(playerDetails: PlayerDetails) : Observable<PlayerDetails>{
   return this.http.put<PlayerDetails>(`${this.urlEndPoint}/pasar`, playerDetails, {headers: this.httpHeaders})
 }
 
+setLastResponse(playerDetails: PlayerDetails) : Observable<PlayerDetails>{
+  return this.http.put<PlayerDetails>(`${this.urlEndPoint}/lastresponse`, playerDetails, {headers: this.httpHeaders})
+}
+
 }

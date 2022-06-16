@@ -1,4 +1,5 @@
 <app-logOut></app-logOut>
+{{this.user.username}}
 
 <ul id="players">
   <li id="player1" style="color:green;">Player 1: {{this.game.players_details[0].user_id}}<br> Coins: {{this.game.players_details[0].coins}}</li>
@@ -152,7 +153,7 @@
         <td colspan="6" rowspan="6" id="boxCenter">
           <div id="dado" style="display:none;">
             <img src="/assets/img/dado.gif" class="img-thumbnail" alt="..." ></div>
-          <div *ngIf="this.playerDetails.turn">
+          <div *ngIf="this.playerDetails.turn == true">
             <button type="button" (click)="tirarDados()" class="btn btn-info" id="btn-dados">Tirar los dados</button>
           </div>
         </td>

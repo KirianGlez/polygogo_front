@@ -14,7 +14,6 @@ import { LogOutComponent } from './logOut/logOut.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './game/board/dialog/dialog.component';
-
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},

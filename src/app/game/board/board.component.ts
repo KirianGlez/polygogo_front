@@ -57,15 +57,16 @@ export class BoardComponent implements OnInit {
         this.game.players_details.forEach(player => {
           if(player.user_id == this.user.username){
             this.playerDetails = player;
-          }
 
+            this.gameService.setLastResponse(player).subscribe(response=>{});
+          }
           if(player.turn){
             let turno=document.getElementById('turno') as HTMLInputElement;
             turno.innerHTML = "Turno de " + player.user_id;
           }
         });
-      console.log("delay");
       this.mostrarPosiciones();
+      this.propiedadesCompradas();
       await this.delay(1000);
       this.mostrarDatosPartida();
       });
@@ -91,13 +92,21 @@ export class BoardComponent implements OnInit {
     this.gameService.movePlayer(this.playerDetails).subscribe(
       response => {
         dados.innerHTML = "";
-        this.openDialog(response);
+        if(response){
+          if(!response.price){
+            this.gameService.pasarTurno(this.playerDetails).subscribe(response => {});
+          }else{
+            this.openDialog(response);
+          }
+        }else{
+          this.gameService.pasarTurno(this.playerDetails).subscribe(response => {});
+        }
       }
     )
   }
 
   openDialog(property: Properties) {
-    this.dialog.open(DialogComponent, {
+      this.dialog.open(DialogComponent, {
       data: {
         property: property,
         playerDetails: this.playerDetails
@@ -105,6 +114,24 @@ export class BoardComponent implements OnInit {
       width: '60%',
       height: '80%'
     });
+    
+  }
+
+  private propiedadesCompradas(){
+    this.game.players_details.forEach(
+      player_details => {
+        player_details.properties.forEach(
+          property => {
+            property.forEach(
+              propertie => {
+                let box=document.getElementById('box' + propertie) as HTMLInputElement;
+                box.getElementsByTagName('th')[0].innerHTML = '<div id="comprada">Comprada</div>';
+              }
+            )
+          }
+        )
+      }
+    )
   }
 
   private delay(ms: number) {

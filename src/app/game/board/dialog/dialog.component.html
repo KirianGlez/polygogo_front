@@ -6,6 +6,9 @@
     <p class="card-text">GRUPO: {{data.property.color}}</p> 
     <p class="card-text">ALQUILER:</p>
 
+    <div *ngIf=nulo>
+      Has pagado el alquiler
+    </div>
     <table class="table table-bordered">
       <thead>
         <tr>
